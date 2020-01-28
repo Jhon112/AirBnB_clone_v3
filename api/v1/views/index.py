@@ -3,7 +3,7 @@
 """
 from api.v1.views import app_views
 from flask import jsonify
-from models import file_storage
+from models.engine import file_storage
 
 
 @app_views.route('/status')
@@ -13,10 +13,11 @@ def status():
     """
     return jsonify(status='OK')
 
-def stats():
+@app_views.route('/stats')
+def stats(self):
     """
         Return the number of each objects
     """
-    stats = file_storage.count()
+    stats = self.count()
     return jsonify(**stats)
 
