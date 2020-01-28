@@ -93,6 +93,9 @@ class FileStorage:
             return num
         else:
             clase = self.all().values()
-            num = len(clase)
+            if len(clase) == 0:
+                return 0
+            else:
+                num = len(clase)
             return num
 
