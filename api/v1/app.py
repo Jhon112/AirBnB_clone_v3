@@ -2,7 +2,7 @@
 """
 App file
 """
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, jsonify
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -14,10 +14,18 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def close(error):
     """
-    Close session
+        Close session
     """
     storage.close()
 
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """
+        handle error 404
+    """
+    error = {"error": "Not found"}
+    return jsonify(error)
 
 if __name__ == "__main__":
     host = getenv('HBNB_API_HOST')
