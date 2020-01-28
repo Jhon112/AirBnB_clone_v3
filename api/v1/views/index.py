@@ -19,4 +19,4 @@ def stats():
     """
     stats = file_storage.count()
     return jsonify(**stats)
-    
+
