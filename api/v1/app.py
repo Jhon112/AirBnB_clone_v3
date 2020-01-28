@@ -1,5 +1,6 @@
-#!/usr/bin/python3PI_HOST
+#!/usr/bin/python3
 """
+App file
 """
 from flask import Flask, Blueprint
 from models import storage
@@ -22,6 +23,6 @@ if __name__ == "__main__":
     host = getenv('HBNB_API_HOST')
     port = getenv('HBNB_API_PORT')
     app.run(host='0.0.0.0',
-            port='5000',
+            port=5000,
             threaded=True,
             debug=True)
