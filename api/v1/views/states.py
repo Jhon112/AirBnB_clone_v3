@@ -20,7 +20,7 @@ def states():
     for obj in all_states:
         states.append(obj.to_dict())
 
-    return Response(json.dumps(states),  mimetype='application/json')
+    return jsonify(states)
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False)
