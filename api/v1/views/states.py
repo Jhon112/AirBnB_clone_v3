@@ -36,7 +36,8 @@ def list_states(state_id):
     return jsonify(state)
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_state(state_id):
     """
         deletes a State object
@@ -59,7 +60,7 @@ def post_state():
     if not request.json:
         abort(400, "Not a JSON")
     data = request.json
-    if not 'name' in data.keys():
+    if 'name' not in data.keys():
         abort(400, "Missing name")
     instance = State(**data)
     storage.new(instance)
@@ -87,5 +88,3 @@ def update_state(state_id):
     storage.save()
 
     return make_response(jsonify(state.to_dict()), 200)
-
-
