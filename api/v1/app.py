@@ -29,9 +29,7 @@ def page_not_found(error):
     return make_response(jsonify(error), 404)
 
 if __name__ == "__main__":
-    host = getenv('HBNB_API_HOST')
-    port = getenv('HBNB_API_PORT')
-    app.run(host='0.0.0.0',
-            port=5000,
+    app.run(host=getenv('HBNB_API_HOST', '0.0.0.0'),
+            port=int(getenv('HBNB_API_PORT', '5000')),
             threaded=True,
             debug=True)
