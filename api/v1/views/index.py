@@ -1,5 +1,6 @@
 #!/usr/bin/pyhton3
-""" Views
+"""
+Views
 """
 from api.v1.views import app_views
 from flask import jsonify
@@ -19,11 +20,11 @@ def stats():
     """
         Return the number of each objects
     """
-    stats = {}
-    stats['states'] = storage.count("State")
-    stats['cities'] = storage.count("City")
-    stats['amenities'] = storage.count("Amenity")
-    stats['places'] = storage.count("Place")
-    stats['users'] = storage.count("User")
-    stats['reviews'] = storage.count("Review")
+    stats = {"amenities": storage.count('Amenity'),
+             "cities": storage.count('City'),
+             "places": storage.count('Place'),
+             "reviews": storage.count('Review'),
+             "states": storage.count('State'),
+             "users": storage.count('User')}
+
     return jsonify(stats)
