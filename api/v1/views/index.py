@@ -1,4 +1,4 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
 """
 Views
 """
@@ -9,22 +9,22 @@ from models import storage
 
 @app_views.route('/status', strict_slashes=False)
 def status():
-    """
-        Return status `Ok`
-    """
+    """Return ok status"""
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/stats', strict_slashes=False)
+@app_views.route('/stats')
 def stats():
     """
-        Return the number of each objects
+    return counter of each object
     """
-    stats = {"amenities": storage.count('Amenity'),
-             "cities": storage.count('City'),
-             "places": storage.count('Place'),
-             "reviews": storage.count('Review'),
-             "states": storage.count('State'),
-             "users": storage.count('User')}
+
+    stats = {}
+    stats['states'] = storage.count('State')
+    stats['amenities'] = storage.count("Amenity")
+    stats['users'] = storage.count("users")
+    stats['cities'] = storage.count("City")
+    stats['places'] = storage.count("Place")
+    stats['reviews'] = storage.count("Review")
 
     return jsonify(stats)
