@@ -90,12 +90,9 @@ class FileStorage:
         if cls is not None:
             clase = self.all(cls).values()
             num = len(clase)
-            return num
         else:
             clase = self.all().values()
-            if len(clase) == 0:
-                return 0
-            else:
-                num = len(clase)
-            return num
+            num = len(clase)
+
+        return num
 

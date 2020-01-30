@@ -96,8 +96,7 @@ class DBStorage:
         if cls is not None:
             clase = self.all(cls).values()
             num = len(clase)
-            return num
         else:
             clase = self.all().values()
             num = len(clase)
-            return num
+        return num
