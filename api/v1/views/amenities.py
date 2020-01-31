@@ -28,10 +28,10 @@ def list_amenities(amenity_id):
     """
         Retrieves a amenity object
     """
-    amenity = storage.get("Amenity", amenity_id).to_dict()
-
+    amenity = storage.get("Amenity", amenity_id)
     if amenity is None:
         abort(404)
+    amenity = amenity.to_dict()
 
     return jsonify(amenity)
 
