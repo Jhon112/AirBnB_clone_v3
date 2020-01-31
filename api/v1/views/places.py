@@ -98,7 +98,7 @@ def update_place(place_id):
 
     data = request.json
     for key, value in data.items():
-        if key == 'user_id' or key == 'user_id':
+        if key == 'user_id' or key == 'city_id':
             continue
         setattr(place, key, value)
 
