@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    reviews view 
+    reviews view
 """
 
 from api.v1.views import app_views
